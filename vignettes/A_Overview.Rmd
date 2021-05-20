@@ -67,7 +67,7 @@ as well as provide code to be performed along the way.
     example data.
 -   *D\_ManagingTheWorkflowOutput*: Obtaining the output from the
     workflow.
--   *E\_DESeq2Analysis*: Analyzing and visualizing the workflow output
+-   *E.0\_DESeq2Analysis*: Analyzing and visualizing the workflow output
     data.
 -   *E.1\_DESeq2Analysis*: Visualizing the DESeq2 results    
 -   *F\_DataCleanUp*: Once data is in the workspace, how to clean up any

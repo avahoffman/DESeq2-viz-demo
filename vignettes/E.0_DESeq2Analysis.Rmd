@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 This vignette will walk you through how to run a full `DESeq2` analysis
 on the output data from the `AnVILBulkRNASeq` workflow. The output data
 should have been retrieved in the previous vignette [Managing the
-Workflow Output](D_ManagingWorkflowOutput.html).
+Workflow Output](D_ManagingWorkflowOutput.ipynb).
 
 # Installation
 
@@ -107,7 +107,7 @@ ddsTxi
 
 Now that all the data and the model design are together in a `DESeqDataSet`, we can run DESeq2's differential expression analysis:
 
-```{r deseq2}
+```{r run_deseq2}
 # Run DESeq2
 dds <- DESeq(ddsTxi)
 ```

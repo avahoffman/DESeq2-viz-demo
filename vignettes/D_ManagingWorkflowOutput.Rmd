@@ -28,12 +28,12 @@ knitr::opts_chunk$set(
 
 This vignette will walk through managing the output data from the workflow that
 was run in the previous vignette [Running the Workflow Within
-AnVIL](C_RunningTheWorkflow.html).
+AnVIL](C_RunningTheWorkflow.ipynb).
 
 # Installation
 
 How to install the `AnVILBulkRNASeq` package is show in the first vignette [An
-Overview of AnVILBulkRNASeq](A_Overview.html). Refer to that vignette for
+Overview of AnVILBulkRNASeq](A_Overview.ipynb). Refer to that vignette for
 installation steps.
 
 Load the development version of the AnVIL package.

@@ -32,7 +32,7 @@ data needs to be stored in order for the workflow to be able to locate it.
 
 # Installation
 
-The previous vignette [An Overview of AnVILBulkRNASeq](A_Overview.html)
+The previous vignette [An Overview of AnVILBulkRNASeq](A_Overview.ipynb)
 demonstrates how to install the package. Refer to that vignette for installation
 steps. The following command will load the package.
 

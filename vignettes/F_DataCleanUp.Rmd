@@ -33,7 +33,7 @@ please refer to the `AnVIL` package vignette for installation steps.
 
 # Installation
 
-The first vignette [An Overview of AnVILBulkRNASeq](A_Overview.html) shows how
+The first vignette [An Overview of AnVILBulkRNASeq](A_Overview.ipynb) shows how
 to install the `AnVILBulkRNASeq` package. Refer back to vignette if package is
 not installed. The following command will load the package.
 
@@ -41,7 +41,7 @@ not installed. The following command will load the package.
 library(AnVILBulkRNASeq)
 ```
 
-The vignette [Running the Workflow Within AnVIL](C_RunningTheWorkflow.html)
+The vignette [Running the Workflow Within AnVIL](C_RunningTheWorkflow.ipynb)
 explains how to install the `AnVIL` package. If you need help installing, please
 refer to that vignette. We will now load the `AnVIL` package.
 
