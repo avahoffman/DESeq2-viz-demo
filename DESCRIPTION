@@ -1,0 +1,26 @@
+Package: test-dir
+Title: Demo for DESeq2 visualization
+Version: 0.99.0
+Authors@R: 
+    person(given = "Ava",
+           family = "Hoffman",
+           role = c("cre"),
+           email = "avamariehoffman@gmail.com")
+Description: 
+    This workspace will demonstrate how to visualize RNA-seq results. Data comes 
+    from an RNA-seq study of *Arabidopsis* samples collected under different 
+    conditions (e.g., dehydration, ABA). Here, we analyze RNA differences in 
+    using `DESeq2`, an R package for differential gene expression. The notebooks 
+    included in this workspace show example visualizations for comparing RNA-seq 
+    samples. This workspace expands on the work by Kayla Interdonato and Martin 
+    Morgan in [This workspace](https://anvil.terra.bio/#workspaces/bioconductor-rpci-anvil/Bioconductor-Workflow-DESeq2)
+License: CC BY 4.0
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.0
+Suggests: 
+    BiocStyle,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
