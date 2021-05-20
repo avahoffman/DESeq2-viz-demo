@@ -1,4 +1,4 @@
-Package: test-dir
+Package: DESeq2-viz-demo
 Title: Demo for DESeq2 visualization
 Version: 0.99.0
 Authors@R: 

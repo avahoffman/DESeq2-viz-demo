@@ -28,3 +28,6 @@ describes the log-transformed difference between conditions or types.
 *Image 2: Mean gene counts (expression) among individuals versus log
 fold change in expression. Each point represents a gene. Genes deemed
 significantly different between conditions are red.*
+
+The Github repository for this project can be found 
+[here](https://github.com/avahoffman/DESeq2-viz-demo).
