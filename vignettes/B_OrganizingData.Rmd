@@ -1,5 +1,5 @@
 ---
-title: "Organizing Data for AnVIL Workflow"
+title: "2. Organizing Data for AnVIL Workflow"
 author:
 - name: Kayla Interdonato
   affiliation: Roswell Park Comprehensive Cancer Center, Buffalo, NY
