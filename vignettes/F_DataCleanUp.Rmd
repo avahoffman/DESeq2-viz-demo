@@ -61,7 +61,7 @@ The first step is to make sure that the proper workspace is being used. We
 define our workspace using the `avworkspace` function.
 
 ```{r workspace}
-avworkspace("bioconductor-rpci-anvil/Bioconductor-Workflow-DESeq2")
+avworkspace("hoffman-ava/DESeq2-visualization-demo")
 avworkspace_namespace()
 avworkspace_name()
 ```

@@ -1,3 +1,19 @@
+---
+title: "DESeq2 Visualization"
+author:
+- name: Ava Hoffman
+  affiliation: Johns Hopkins University, Baltimore, MD
+date: "`r Sys.Date()`"
+output: 
+    BiocStyle::html_document:
+        toc: true
+        toc_float: true
+vignette: >
+  %\VignetteIndexEntry{E_DESeq2Analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
 # Introduction
   
 This vignette will walk you through how to examine results from a `DESeq2` analysis. The output data

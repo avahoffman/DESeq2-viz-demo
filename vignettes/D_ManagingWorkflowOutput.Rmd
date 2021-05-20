@@ -34,54 +34,59 @@ AnVIL](C_RunningTheWorkflow.html).
 
 How to install the `AnVILBulkRNASeq` package is show in the first vignette [An
 Overview of AnVILBulkRNASeq](A_Overview.html). Refer to that vignette for
-installation steps. The following command will load the package.
+installation steps.
+
+Load the development version of the AnVIL package.
 
 ```{r setup}
-library(AnVILBulkRNASeq)
+library(AnVIL)
 ```
 
-We will need the `AnVIL` package again for certain functionality so we will
-install and load it now.
+#Obtain paths of output
 
-```{r install}
-pkgs = "Bioconductor/AnVIL"
-BiocManager::install(pkgs)
-
-suppressPackageStartupMessages({
-    library(AnVIL)
-})
-```
-
-# Obtain paths of output
-
-In order to run the `DESeq2` analysis in the next vignette, we must locate the
-data that was the output from the `AnVILBulkRNASeq` workflow. The following code
-will utilize functions from the `AnVIL` package to return the output paths.
+In order to run the `DESeq2` analysis in the next vignette, we must
+locate the data that was the output from the `AnVILBulkRNASeq` workflow.
+The following code uses functions from the `AnVIL` package to
+return the paths in the google bucket to the last completed run of the 
+workflow (see the AnVIL package vignette and documentation to retreive 
+results from different workflow runs).
 
 ```{r paths}
-gs_paths <- avworkflow_jobs() %>% 
-    head(1) %>% 
+gs_paths <- 
     avworkflow_files() %>%
     filter(startsWith(.data$file, "DRR")) %>% 
     pull(path)
 ```
 
-`avworkflow_jobs()` will locate the list of jobs run on the AnVIL workspace.
-The last job is grabbed using `head(1)`, then the files associated with that job
-are listed using `avworkflow_files()`. We know that our samples files all have
-"DRR" in the names so we use `filter(startsWith(.data$file, "DRR"))` to filter
-out the files that start with "DRR". Then we use `pull(path)` to pull out the
-paths where the output data was saved on the Google bucket.
+The files associated with that job are listed using `avworkflow_files()`. We know
+that our samples files all have “DRR” in the names so we use
+`filter(startsWith(.data$file, "DRR"))` to filter out the files that
+start with “DRR”. Then we use `pull(path)` to pull out the paths where
+the output data was saved on the Google bucket.
 
-With these paths, we can then copy the output tarballs to the current workspace
-and untar them. Again, we will utilize functionality from `AnVIL` to achieve
-this.
+With these paths, we can then copy the output tarballs to the current
+workspace and untar them. Again, we will utilize functionality from
+`AnVIL` to achieve this.
+
+```{r copy_tar}
+dir()    # nothing up our sleeves!
+AnVIL::gsutil_cp(gs_paths, getwd())
+dir()    # files copied from the bucket to the local file system!
+```
+
+We need to untar each file:
 
 ```{r untar}
-AnVIL::gsutil_cp(gs_paths, getwd())
+files <- basename(gs_paths)
+for (file in files)
+    untar(file)
+dir()
+```
 
-file_list <- basename(gs_paths)
-lapply(seq_along(lengths(file_list)), function(x) untar(file_list[x]))
+and, when we are confident in the success of the previous operation, remove the original `.tar.gz` files.
+
+```{r unlink}
+unlink(files)
 ```
 
 Now we have files for each sample that contains the necessary output files to

@@ -25,28 +25,19 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-This vignette will walk you through how to run a full `DESeq2` analysis on the
-output data from the `AnVILBulkRNASeq` workflow. The output data should have
-been retrieved in the previous vignette [Managing the Workflow
-Output](D_ManagingWorkflowOutput.html).
+This vignette will walk you through how to run a full `DESeq2` analysis
+on the output data from the `AnVILBulkRNASeq` workflow. The output data
+should have been retrieved in the previous vignette [Managing the
+Workflow Output](D_ManagingWorkflowOutput.html).
 
 # Installation
 
-How to install the `AnVILBulkRNASeq` package is shown in the first vignette [An
-Overview of AnVILBulkRNASeq](A_Overview.html). Refer to that vignette for
-installation steps. The following command will load the package.
+Instructions for installing packages necessary for this notebook are given in [An Overview of AnVILBulkRNASeq](A_Overview.ipynb). Refer to
+that vignette for installation steps.
 
-```{r setup}
-library(AnVILBulkRNASeq)
-```
-
-Again, we will need functionality from `AnVIL`, as well as other packages so we
-will install and load them now.
+Load the development version of the AnVIL package, and the packages to be used in this notebook.
 
 ```{r install}
-pkgs = c("Bioconductor/AnVIL", "GenomicFeatures", "tximport", "DESeq2")
-BiocManager::install(pkgs)
-
 suppressPackageStartupMessages({
     library(AnVIL)
     library(GenomicFeatures)
@@ -64,6 +55,7 @@ to `files`.
 ```{r paths}
 files_path <- paste0(getwd(), "/DRR0161%s_1/quant.sf")
 files <- sprintf(files_path, 25:40)
+names(files) <- sprintf("DRR0161%s", 25:40)
 ```
 
 A txdb object is needed for the analysis so we download the GTF file associated
@@ -72,6 +64,7 @@ with Arabidopis thaliana and run `makeTxDbFromGFF()` on the downloaded file.
 ```{r txdb}
 download.file("ftp://ftp.ensemblgenomes.org/pub/plants/release-28/gtf/arabidopsis_thaliana/Arabidopsis_thaliana.TAIR10.28.gtf.gz",
 "Arabidopsis_thaliana.TAIR10.28.gtf.gz")
+dir()
 
 txdb <- makeTxDbFromGFF(file = "Arabidopsis_thaliana.TAIR10.28.gtf.gz")
 txdb
@@ -91,11 +84,10 @@ that contains abundance, counts, and length. This `txi` object will be used in
 the later analysis.
 
 ```{r tximport}
-names(files) <- sprintf("DRR0161%s", 25:40)
 txi <- tximport(files, type = "salmon", tx2gene = tx2gene)
 
 tbl <- avtable('participant')
-samples <- tbl[,c('name', 'condition', 'type')]
+samples <- tbl[,c('participant_id', 'condition', 'type')]
 samples
 ```
 
@@ -109,7 +101,22 @@ functions. `DESeqDataSetFromTximport()` will be the function used since we used
 ddsTxi <- DESeqDataSetFromTximport(txi,
     colData = samples,
     design = ~ type + condition
-ddsTxi)
+)
+ddsTxi
+```
+
+Now that all the data and the model design are together in a `DESeqDataSet`, we can run DESeq2's differential expression analysis:
+
+```{r deseq2}
+# Run DESeq2
+dds <- DESeq(ddsTxi)
+```
+
+Write the output of the `DESeq()` analysis:
+
+```{r save_deseq}
+saveRDS(dds, file = "DESeq_result.RData")
+AnVIL::avfiles_backup(source = "DESeq_result.RData")
 ```
 
 # Sesion Information

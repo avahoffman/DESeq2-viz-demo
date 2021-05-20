@@ -154,7 +154,6 @@ Now that the data is downloaded and in it's proper location the next vignette
 will walk through how to run the workflow that will quantify the raw fasta files
 using Salmon.
 
-
 # Session Information
 
 ```{r, eval = TRUE}

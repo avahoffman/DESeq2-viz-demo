@@ -25,49 +25,58 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-The goal of the `AnVILBulkRNASeq` package is to provide users all the tools to
-perform a typical `DESeq2` analysis utilizing AnVIL. This package contains all
-files (except for raw FASTQ files) needed to complete the analysis.
+The goal of the `AnVILBulkRNASeq` package is to provide users all the
+tools to perform a typical `DESeq2` analysis utilizing AnVIL. This
+package contains all files (except for raw FASTQ files) needed to
+complete the analysis.
 
 # Installation
 
-The following code will install the latest version of `AnVILBulkRNASeq` package
-from Bioconductor.
+The following code will install necessary software for all notebooks. We start by updating installed packages to their current version, then install the 'development' version of the AnVIL package, and finally install packages used in the notebooks.
+
+The entire process can take 20 or more minutes. Jupyter notebooks just indicate that the cell is being evaluated during this time, so it is easy to lose faith that  the command is still executing. A different approach is to start the terminal (click on `>_` in the top right), start an R session from the command line (just type `R` and then the carriage return) and copy and paste the commands below into the terminal.
 
 ```{r install, eval = FALSE}
 if(!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-BiocManager::install("AnVILBulkRNASeq")
+
+BiocManager::install(ask = FALSE)                   # update existing packages
+
+pkgs = c("GenomicFeatures", "tximport", "DESeq2")   # install packages (and dependencies) for notebooks
+BiocManager::install(pkgs)
+
+BiocManager::install("Bioconductor/AnVIL")          # install the development version of the AnVIL package
 ```
 
-The development version is also available for install from GitHub:
+For notebooks B and C, the AnVILBulkRNASeq needs to be installed from GitHub
 
 ```{r github, eval = FALSE}
 BiocManager::install("Kayla-Morrell/AnVILBulkRNASeq")
 ```
 
-Then to load `AnVILBulkRNASeq`:
-
-```{r load, message = FALSE}
-library(AnVILBulkRNASeq)
-```
-
 # Overview
 
-There are vignettes contained in the package that will explain each step as well
-as provide code to be performed along the way. 
+There are vignettes contained in the package that will explain each step
+as well as provide code to be performed along the way.
 
-* *A_Overview*: An overview of what will be accomplished in this workspace.
-* *B_OrganizingData*: Downloading an example dataset and where to store it.
-* *C_RunningTheWorkflow*: How to run the AnVILBulkRNASeq workflow on example data.
-* *D_ManagingTheWorkflowOutput*: Obtaining the output from the workflow.
-* *E_DESeq2Analysis*: Analyzing and visualizing the workflow output data.
-* *F_DataCleanUp*: Once data is in the workspace, how to clean up any unwanted data.
+-   *A\_Overview*: An overview of what will be accomplished in this
+    workspace.
+-   *B\_OrganizingData*: Downloading an example dataset and where to
+    store it.
+-   *C\_RunningTheWorkflow*: How to run the AnVILBulkRNASeq workflow on
+    example data.
+-   *D\_ManagingTheWorkflowOutput*: Obtaining the output from the
+    workflow.
+-   *E\_DESeq2Analysis*: Analyzing and visualizing the workflow output
+    data.
+-   *E.1\_DESeq2Analysis*: Visualizing the DESeq2 results    
+-   *F\_DataCleanUp*: Once data is in the workspace, how to clean up any
+    unwanted data.
 
 Each of the above vignettes corresponds to a Jupyter notebook in the
-Bioconductor-Workflow-DESeq2 workspace on AnVIL. The code will be executable
-whether running from the notebooks on the workspace or running locally from the
-vignettes.
+Bioconductor-Workflow-DESeq2 workspace on AnVIL. The code will be
+executable whether running from the notebooks on the workspace or
+running locally from the vignettes.
 
 # Session Information
 
