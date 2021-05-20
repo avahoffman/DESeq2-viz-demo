@@ -1,0 +1,78 @@
+# Introduction
+  
+This vignette will walk you through how to examine results from a `DESeq2` analysis. The output data
+should have been saved to the bucket in the previous vignette [DESeq2 Analysis](E_DESeq2Analysis.ipynb).
+
+# Installation
+  
+Instructions for installing packages necessary for this notebook are given in [An Overview of AnVILBulkRNASeq](A_Overview.ipynb). Refer to
+that vignette for installation steps.
+
+Load the packages to be used in this notebook:
+  
+```{r load_deseq_ggplot}
+# Load packages
+suppressPackageStartupMessages({
+    library(DESeq2)
+    library(ggplot2)
+})
+```
+
+# Load the `DESeq` results:
+
+```{r load_deseq_res}
+# Move the result saved in the bucket to the compute workspace
+AnVIL::avfiles_restore(source = "DESeq_result.RData")
+
+# Load the results
+dds <- readRDS("DESeq_result.RData")
+dds
+```
+
+# Examine counts
+
+We're interested in how many genes differ in their expression among types treatments. We can use `counts()` to take a look at the raw data in table form. Each plant sample appears as a column and each gene as a row.
+
+```{r counts}
+# Looking at raw data
+counts(dds)
+```
+
+# Visualizing Variation
+
+To visualize our data, we'll first do a log transformation, followed by principal component analysis + plot. This will give us a sense of where most of the variation in gene expression comes from in our experiment.
+
+```{r pca}
+# Transform results using regularized log
+transformed_results <- rlog(dds)
+
+# Set plot size to be a big larger
+options(jupyter.plot_scale=1)
+
+# Make PCA plot
+plotPCA(
+    transformed_results, 
+    intgroup=c("condition", "type")) + 
+    labs(color = "Condition:Type")
+```
+
+# Visualizing Differential Expression
+
+We can also visualize the difference between conditions. An MA-plot shows the mean count of each gene along the x-axis and the log-fold change (difference between conditions) on the y-axis.
+
+```{r de_viz}
+# Looking at condition=mock versus condition=ABA
+condition_results <- results(dds, name="condition_mock_vs_ABA")
+
+# Set plot size to be a big larger
+options(jupyter.plot_scale=2)
+
+# Make MA plot
+plotMA(condition_results, main = "Mock vs. ABA Condition")
+```
+
+# Sesion Information
+
+```{r eval = TRUE}
+sessionInfo()
+```
