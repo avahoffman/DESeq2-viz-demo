@@ -11,7 +11,7 @@ output:
         toc: true
         toc_float: true
 vignette: >
-  %\VignetteIndexEntry{E_DESeq2Analysis}
+  %\VignetteIndexEntry{E.0_DESeq2Analysis}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -9,7 +9,7 @@ output:
         toc: true
         toc_float: true
 vignette: >
-  %\VignetteIndexEntry{E_DESeq2Analysis}
+  %\VignetteIndexEntry{E.1_DESeq2Analysis}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,7 +17,7 @@ vignette: >
 # Introduction
   
 This vignette will walk you through how to examine results from a `DESeq2` analysis. The output data
-should have been saved to the bucket in the previous vignette [DESeq2 Analysis](E_DESeq2Analysis.ipynb).
+should have been saved to the bucket in the previous vignette [DESeq2 Analysis](E.0_DESeq2Analysis.ipynb).
 
 # Installation
   
