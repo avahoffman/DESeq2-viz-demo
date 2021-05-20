@@ -37,3 +37,7 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# Rendered files
+vignettes/*.md
+vignettes/*.ipynb
