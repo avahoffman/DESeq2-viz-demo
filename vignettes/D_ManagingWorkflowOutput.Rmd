@@ -1,5 +1,5 @@
 ---
-title: "4. Managing the Workflow Output"
+title: "D. Managing the Workflow Output"
 author:
 - name: Kayla Interdonato
   affiliation: Roswell Park Comprehensive Cancer Center, Buffalo, NY

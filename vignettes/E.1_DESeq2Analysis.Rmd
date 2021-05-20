@@ -1,5 +1,5 @@
 ---
-title: "6. DESeq2 Visualization"
+title: "E.1. DESeq2 Visualization"
 author:
 - name: Ava Hoffman
   affiliation: Johns Hopkins University, Baltimore, MD
