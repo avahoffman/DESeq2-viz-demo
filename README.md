@@ -1,10 +1,13 @@
 # About this workspace
 
+The Github repository for this project can be found 
+[here](https://github.com/avahoffman/DESeq2-viz-demo).
+
 This experiment uses *Arabidopsis thaliana* RNA-seq data. We are
 interested in how growing condition and plant type has changed counts of
 different genes.
 
-**What kind of visualizations are we using?**
+## What kind of visualizations are we using?
 
 Principal Component Analysis (PCA) lets us look at variation in the
 dataset. Points that appear far apart on a PCA plot are very different
@@ -27,6 +30,3 @@ describes the log-transformed difference between conditions or types.
 fold change in expression. Each point represents a gene. Genes deemed
 significantly different between conditions are blue. Positive log-fold change genes
 have greater expression in the ABA treatment compared to the Mock condition.*
-
-The Github repository for this project can be found 
-[here](https://github.com/avahoffman/DESeq2-viz-demo).
