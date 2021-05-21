@@ -13,6 +13,9 @@ compared to those closer together.
 ![Principal components analysis of the Italian
 population](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Principal_Component_Analysis_of_the_Italian_population.png/600px-Principal_Component_Analysis_of_the_Italian_population.png)
 
+![Principal components analysis of the Italian
+population](https://drive.google.com/open?id=1juIuUWjJKqbeFbPnPA-F4mLK26lh4B7T)
+
 *Image 1: Principal component analysis showing the genetic structure of
 the human population of Italy. Individuals are color coded by region.
 Individuals from Sardinia are genetically different compared to the rest
