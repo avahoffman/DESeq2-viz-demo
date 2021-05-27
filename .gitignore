@@ -41,3 +41,6 @@ vignettes/*.pdf
 # Rendered files
 vignettes/*.md
 vignettes/*.ipynb
+
+# Publishing file
+Publish.Rmd
