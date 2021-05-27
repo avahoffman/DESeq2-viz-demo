@@ -38,7 +38,15 @@ suppressPackageStartupMessages({
 
 ```{r load_deseq_res}
 # Move the result saved in the bucket to the compute workspace
-AnVIL::avfiles_restore(source = "DESeq_result.RData")
+tryCatch(
+    # First will try to move the file you generated
+    AnVIL::avfiles_restore(source = "DESeq_result.RData"), 
+    # If you were unable to do so, it uses Ava's as backup
+    error=function(e){
+        AnVIL::avfiles_restore(source = "DESeq_result.RData",
+                      namespace = "hoffman-ava",
+                      name = "Bioconductor-Workflow-DESeq2-ava")
+    })
 
 # Load the results
 dds <- readRDS("DESeq_result.RData")
